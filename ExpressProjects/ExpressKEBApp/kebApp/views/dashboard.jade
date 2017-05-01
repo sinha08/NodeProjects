@@ -18,7 +18,8 @@ block content
       .col-lg-9.form-group
         label(for="exampleTextarea") Likhne ka area
         textarea(rows="3").form-control#exampleTextarea
-      .col-lg-3.jumbotron
-        h2 Blacklisted
-        p #{blacklist_names}
+      .col-lg-3
+        .panel.panel-primary
+          .panel-heading Blacklisted
+          .panel-body #{blacklist_names}
           img(src="https://previews.123rf.com/images/yayayoy/yayayoy1109/yayayoy110900021/10601995-Dislike-emoticon-Stock-Vector-smiley-face-angry.jpg", width="30px", height="30px")
