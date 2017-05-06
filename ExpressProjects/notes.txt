@@ -1,0 +1,8 @@
+To add dev dependencies to package.json run
+
+  npm install <package-name> --save-dev
+
+
+To install all dependencies from package.json run
+
+  npm install
