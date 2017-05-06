@@ -1,4 +1,4 @@
-var userModel = {
+var User = {
   createUser: function(user){
     //creates one user in the db
     // connect to db
@@ -7,4 +7,4 @@ var userModel = {
     console.log(user);
   }
 }
-module.exports = userModel;
+module.exports = User;
