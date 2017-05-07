@@ -23,3 +23,18 @@ block content
           .panel-heading Blacklisted
           .panel-body #{blacklist_names}
           img(src="https://previews.123rf.com/images/yayayoy/yayayoy1109/yayayoy110900021/10601995-Dislike-emoticon-Stock-Vector-smiley-face-angry.jpg", width="30px", height="30px")
+    if users != undefined
+      .container
+        div
+        table.table.table-striped
+          thead
+            tr
+              th Login
+              th First Name
+              th Last Name
+          tbody
+            each user in users
+              tr
+                td= user.login_name
+                td= user.first_name
+                td= user.last_name

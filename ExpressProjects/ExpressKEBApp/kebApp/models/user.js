@@ -3,9 +3,9 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
-  loginName: String,
-  firstName: String,
-  lastName: String
+  login_name: String,
+  first_name: String,
+  last_name: String
 });
 
 module.exports = mongoose.model('User', UserSchema);

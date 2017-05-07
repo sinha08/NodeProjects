@@ -21,9 +21,10 @@ exports.users_get = function(req, res, next){
           if(err){
             return next(err);
           }
-          console.log(users);
+          res.render('dashboard', { title: 'KEB Dashboard' ,
+                                    blacklist_names:'Nahi khana yaha se',
+                                    users: users
+                                  });
         });
-
-    res.send('reponse with users coming soon');
     console.log('Exiting users_get');
 }
