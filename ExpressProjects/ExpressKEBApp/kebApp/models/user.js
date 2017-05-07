@@ -1,10 +1,11 @@
-var User = {
-  createUser: function(user){
-    //creates one user in the db
-    // connect to db
-    // get values from user var and store a user in the database
-    console.log('User successfully created: ');
-    console.log(user);
-  }
-}
-module.exports = User;
+var mongoose = require('mongoose');
+
+var Schema = mongoose.Schema;
+
+var UserSchema = new Schema({
+  loginName: String,
+  firstName: String,
+  lastName: String
+});
+
+module.exports = mongoose.model('User', UserSchema);
