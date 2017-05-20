@@ -6,3 +6,8 @@ To add dev dependencies to package.json run
 To install all dependencies from package.json run
 
   npm install
+
+To generate express app
+ 1. npm install express-generator in a dir
+ 2. express app in same dir
+ 3. nom install and then npm start and you are good to go
