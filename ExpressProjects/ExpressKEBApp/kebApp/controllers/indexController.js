@@ -25,9 +25,10 @@ exports.get_dashboard = function(req, res, next) {
           if(err){
             return next(err);
           }
+          console.log(restaurants);
           res.render('dashboard', { title: 'KEB Dashboard' ,
                                     blacklist_names:'Nahi khana yaha se',
-                                    restaurant_list: restaurants
+                                    restaurants: restaurants
                                   });
         });
 }
