@@ -24,19 +24,20 @@ block content
             | Black Listed Restaurents
             span.glyphicon.glyphicon-plus.pull-right(data-toggle='collapse', data-target='#addRestoDiv')
             #addRestoDiv.collapse
-              input.form-control(type='text', placeholder='name')
-              input.form-control(type='text', placeholder='url')
+              input#restaurantName.form-control(type='text', placeholder='name')
+              input#restaurantUrl.form-control(type='text', placeholder='url')
               button#addRestaurantBtn.btn Add
           .panel-body
             table.table.table-striped
               tbody
-                tr
-                  td Rest 1
-                  td
-                    i.glyphicon.glyphicon-plus.pull-right(data-toggle='collapse', data-target='#menuItem1')
-                tr#menuItem1.collapse
-                  td
-                    input.form-control(type='text', placeholder='menu item')
+                each restaurant in restaurants
+                  tr
+                    td=restaurant.restaurant_name
+                    td
+                      i.glyphicon.glyphicon-plus.pull-right(data-toggle='collapse', data-target='##{restaurant.restaurant_name}')
+                  tr.collapse(id = '#{restaurant.restaurant_name}')
+                    td
+                      input.form-control(type='text', placeholder='menu item')
 
     if users != undefined
       .container
