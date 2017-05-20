@@ -1,4 +1,5 @@
 var User = require('../models/user');
+var Restaurant = require('../models/restaurant');
 
 exports.get_login_page = function(req, res, next){
   res.render('login');
@@ -19,7 +20,16 @@ exports.authenticate_login = function(req, res, next){
 }
 
 exports.get_dashboard = function(req, res, next) {
-  res.render('dashboard', { title: 'KEB Dashboard' ,blacklist_names:'Nahi khana yaha se'});
+  Restaurant.find({}, 'restaurant_name restaurant_menu restaurant_url')
+        .exec(function(err, restaurants){
+          if(err){
+            return next(err);
+          }
+          res.render('dashboard', { title: 'KEB Dashboard' ,
+                                    blacklist_names:'Nahi khana yaha se',
+                                    restaurant_list: restaurants
+                                  });
+        });
 }
 
 exports.logout_user = function(req, res, next) {
