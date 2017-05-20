@@ -1,3 +1,5 @@
+var User = require('../models/user');
+
 exports.get_login_page = function(req, res, next){
   res.render('login');
 }
