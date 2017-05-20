@@ -1,0 +1,15 @@
+Mongo DB at
+
+https://mlab.com/login/
+
+username : kr.dhaval
+
+
+
+To connect using the mongo shell:
+
+  mongo ds133241.mlab.com:33241/keb_layout_db -u <dbuser> -p <dbpassword>
+
+To connect using a driver via the standard MongoDB URI (what's this?):
+
+  mongodb://<dbuser>:<dbpassword>@ds133241.mlab.com:33241/keb_layout_db

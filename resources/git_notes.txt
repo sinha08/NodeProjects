@@ -1,0 +1,2 @@
+git diff <file_name>
+  > to see the changes in a file
