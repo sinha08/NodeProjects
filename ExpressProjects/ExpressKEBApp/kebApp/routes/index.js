@@ -1,26 +1,14 @@
 var express = require('express');
 var router = express.Router();
+var index_controller = require('../controllers/indexController');
 
 /* GET home page. */
-router.get('/login', function(req, res){
-  //render login page here
-});
+router.get('/login', index_controller.get_login_page);
 
-router.post('/login', function(req, res){
-    //authenticate the user here
-});
+router.post('/login', index_controller.authenticate_login);
 
-router.get('/signup', function(req, res){
-  //render sign up page here
-});
+router.get('/signup', index_controller.get_signup_page);
 
-router.post('/signup', function(req, res){
-  // redirect to /users/create
-  res.redirect('/users/create');
-});
-
-router.get('/', function(req, res, next) {
-  res.render('dashboard', { title: 'KEB Dashboard' ,blacklist_names:'Nahi khana yaha se'});
-});
+router.get('/', index_controller.get_dashboard);
 
 module.exports = router;
