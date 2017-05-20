@@ -20,6 +20,7 @@ exports.user_create_post = function(req, res, next){
           if(err){ return next(err);}
 
           if(found_user){
+            res.send('User already exists');
           }else{
             user.save(function(err){
               if(err){ return next(err)}
