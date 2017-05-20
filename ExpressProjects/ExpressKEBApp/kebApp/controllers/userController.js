@@ -5,9 +5,30 @@ exports.user_create_post = function(req, res, next){
     /*
       req.body contains the json for user details. we need to create a function which will validate this user data
     */
-    var user = req.body;
+    var user_data = req.body;
+    var user = new User({
+      login_name: req.body.login_name,
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      email: req.body.email,
+      password: req.body.password
+    });
 
-    res.send('reponse with user created coming soon');
+    User.findOne({ 'login_name': req.body.login_name})
+        .exec(function(err, found_user){
+          console.log('found user: ' + found_user);
+          if(err){ return next(err);}
+
+          if(found_user){
+            res.send('User with login name already exists');
+          }else{
+            user.save(function(err){
+              if(err){ return next(err)}
+              res.send('User created successfully');
+            });
+
+          }
+        })
     console.log('Exiting user-create-post');
 }
 

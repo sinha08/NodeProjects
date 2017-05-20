@@ -16,6 +16,7 @@ router.get('/signup', function(req, res){
 
 router.post('/signup', function(req, res){
   // redirect to /users/create
+  res.redirect('/users/create');
 });
 
 router.get('/', function(req, res, next) {
