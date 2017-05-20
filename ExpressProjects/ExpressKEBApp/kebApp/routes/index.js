@@ -10,8 +10,8 @@ router.post('/login', index_controller.authenticate_login);
 
 router.get('/logout', index_controller.logout_user);
 
-router.get('/dashboard', restaurant_controller.restaurant_get);
+router.get('/dashboard', index_controller.get_dashboard);
 
-router.post('/create/restaurant', restaurant_controller.restaurant_create_post);
+router.post('/restaurant/create', restaurant_controller.restaurant_create_post);
 
 module.exports = router;
