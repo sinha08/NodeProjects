@@ -1,0 +1,14 @@
+> login page
+  > login
+  > sign up
+    > sign up form
+      > get user details
+      > google/facebook id
+  -- > forgot password
+
+
+
+
+
+login > dashboard
+        > user name
