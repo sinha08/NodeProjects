@@ -1,0 +1,59 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    link(rel='stylesheet', type='text/css', href='https://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css')
+    link(rel='stylesheet', type='text/css', href='stylesheets/login.css')
+    script(src='https://code.jquery.com/jquery-3.1.1.min.js')
+    script(src='scripts/login.js')
+  body
+    nav.navbar.navbar-inverse
+      .container
+        .navbar-header
+    .container
+      #welcome.jumbotron
+        h1 Welocme to KEB!!
+    .container
+      .row
+        .col-md-6.col-md-offset-3
+          .panel.panel-login
+            .panel-heading
+              .row
+                .col-xs-6
+                  a#login-form-link.active(href='#') Login
+                .col-xs-6
+                  a#register-form-link(href='#') Register
+              hr
+            .panel-body
+              .row
+                .col-lg-12
+                  form#login-form(action='', method='post', role='form', style='display: block;')
+                    .form-group
+                      input#username.form-control(type='text', name='username', tabindex='1', placeholder='Username', value='')
+                    .form-group
+                      input#password.form-control(type='password', name='password', tabindex='2', placeholder='Password')
+                    .form-group.text-center
+                      input#remember(type='checkbox', tabindex='3', name='remember')
+                      label(for='remember')  Remember Me
+                    .form-group
+                      .row
+                        .col-sm-6.col-sm-offset-3
+                          input#login-submit.form-control.btn.btn-login(type='submit', name='login-submit', tabindex='4', value='Log In')
+                    .form-group
+                      .row
+                        .col-lg-12
+                          .text-center
+                            a.forgot-password(href='', tabindex='5') Forgot Password?
+                  form#register-form(action='', method='post', role='form', style='display: none;')
+                    .form-group
+                      input#username.form-control(type='text', name='username', tabindex='1', placeholder='Username', value='')
+                    .form-group
+                      input#email.form-control(type='email', name='email', tabindex='1', placeholder='Email Address', value='')
+                    .form-group
+                      input#password.form-control(type='password', name='password', tabindex='2', placeholder='Password')
+                    .form-group
+                      input#confirm-password.form-control(type='password', name='confirm-password', tabindex='2', placeholder='Confirm Password')
+                    .form-group
+                      .row
+                        .col-sm-6.col-sm-offset-3
+                          input#register-submit.form-control.btn.btn-register(type='submit', name='register-submit', tabindex='4', value='Register Now')

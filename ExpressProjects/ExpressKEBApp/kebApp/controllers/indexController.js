@@ -1,9 +1,5 @@
-exports.get_signup_page = function(req, res, next){
-  // render sign up page here
-}
-
 exports.get_login_page = function(req, res, next){
-  // render login page here
+  res.render('login');
 }
 
 exports.authenticate_login = function(req, res, next){
