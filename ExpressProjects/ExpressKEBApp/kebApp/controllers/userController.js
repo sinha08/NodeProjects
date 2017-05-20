@@ -24,13 +24,12 @@ exports.user_create_post = function(req, res, next){
           }else{
             user.save(function(err){
               if(err){ return next(err)}
-              res.send('User created successfully');
+              res.redirect('/login');
             });
 
           }
         })
     console.log('Exiting user-create-post');
-    res.redirect('/login');
 }
 
 exports.users_get = function(req, res, next){
