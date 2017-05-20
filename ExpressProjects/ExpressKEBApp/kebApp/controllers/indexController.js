@@ -13,7 +13,7 @@ exports.authenticate_login = function(req, res, next){
         if(found_user){
           res.redirect('/dashboard');
         }else{
-          res.send('User does not exist');
+          res.redirect('');
         }
       })
 }
