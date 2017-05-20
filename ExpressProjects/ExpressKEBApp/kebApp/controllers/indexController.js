@@ -21,3 +21,7 @@ exports.authenticate_login = function(req, res, next){
 exports.get_dashboard = function(req, res, next) {
   res.render('dashboard', { title: 'KEB Dashboard' ,blacklist_names:'Nahi khana yaha se'});
 }
+
+exports.logout_user = function(req, res, next) {
+  res.redirect('/');
+}

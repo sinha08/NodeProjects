@@ -9,4 +9,6 @@ router.post('/login', index_controller.authenticate_login);
 
 router.get('/dashboard', index_controller.get_dashboard);
 
+router.get('/logout', index_controller.logout_user);
+
 module.exports = router;
