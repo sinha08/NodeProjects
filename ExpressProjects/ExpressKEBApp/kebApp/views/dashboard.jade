@@ -19,10 +19,24 @@ block content
         label(for="exampleTextarea") Likhne ka area
         textarea(rows="3").form-control#exampleTextarea
       .col-lg-3
-        .panel.panel-primary
-          .panel-heading Blacklisted
-          .panel-body #{blacklist_names}
-          img(src="https://previews.123rf.com/images/yayayoy/yayayoy1109/yayayoy110900021/10601995-Dislike-emoticon-Stock-Vector-smiley-face-angry.jpg", width="30px", height="30px")
+        .panel.panel-default
+          .panel-heading
+            | Black Listed Restaurents
+            span.glyphicon.glyphicon-plus.pull-right(data-toggle='collapse', data-target='#addRestoDiv')
+            #addRestoDiv.collapse
+              input.form-control(type='text', placeholder='name')
+              input.form-control(type='text', placeholder='url')
+          .panel-body
+            table.table.table-striped
+              tbody
+                tr
+                  td Rest 1
+                  td
+                    i.glyphicon.glyphicon-plus.pull-right(data-toggle='collapse', data-target='#menuItem1')
+                tr#menuItem1.collapse
+                  td
+                    input.form-control(type='text', placeholder='menu item')
+
     if users != undefined
       .container
         div
