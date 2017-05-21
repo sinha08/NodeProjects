@@ -3,7 +3,7 @@ var Restaurant = require('../models/restaurant');
 exports.restaurant_create_post = function(req, res, next){
     console.log('Entering restaurant_create_post');
     /*
-      req.body contains the json for restaurant details. 
+      req.body contains the json for restaurant details.
     */
     var restaurant_data = req.body;
     var restaurant = new Restaurant({
@@ -22,7 +22,8 @@ exports.restaurant_create_post = function(req, res, next){
           }else{
             restaurant.save(function(err){
               if(err){ return next(err)}
-              res.redirect('/dashboard');
+              res.type('text/plain');
+              res.json('success');
             });
 
           }
