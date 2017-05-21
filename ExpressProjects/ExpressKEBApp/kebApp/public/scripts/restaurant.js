@@ -9,6 +9,7 @@ $('#addRestaurantBtn').click(function() {
         url:'/restaurant/create',
         data:data,    // multiple data sent using ajax
         success: function () {
+        	window.location.reload();
         }
       });
 
