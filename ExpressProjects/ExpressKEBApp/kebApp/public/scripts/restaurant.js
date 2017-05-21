@@ -8,8 +8,7 @@ $('#addRestaurantBtn').click(function() {
         dataType: "json",
         url:'/restaurant/create',
         data:data,    // multiple data sent using ajax
-        success: function (result) {
-
+        success: function () {
         }
       });
 
