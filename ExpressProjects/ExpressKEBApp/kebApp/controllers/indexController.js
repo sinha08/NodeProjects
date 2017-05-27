@@ -33,7 +33,8 @@ exports.get_dashboard = function(req, res, next) {
           console.log(restaurants);
           res.render('dashboard', { title: 'KEB Dashboard' ,
                                     blacklist_names:'Nahi khana yaha se',
-                                    restaurants: restaurants
+                                    restaurants: restaurants,
+                                    userLoginName: req.session.login_name
                                   });
         });
 }
