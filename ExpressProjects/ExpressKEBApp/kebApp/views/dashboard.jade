@@ -38,7 +38,15 @@ block content
                   tr.collapse(id = '#{restaurant.restaurant_name}')
                     td
                       input.form-control(type='text', placeholder='menu item')
-
+    .container
+      .row
+      .col-lg-3.form-group
+        label(for="exampleTextarea") Msg area
+        .jumbotron
+          ul#messages
+        form#chat_form(action='')
+          input#m(autocomplete='off')
+          button#chat_submit Send
     if users != undefined
       .container
         div

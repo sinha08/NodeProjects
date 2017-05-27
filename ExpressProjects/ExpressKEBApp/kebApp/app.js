@@ -30,6 +30,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.get('/chat', function(req, res){
+  res.sendFile(__dirname + '/views/chat.html');
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
