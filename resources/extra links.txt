@@ -1,0 +1,35 @@
+Important links
+
+No shit for getting started with git
+http://rogerdudler.github.io/git-guide/
+
+Followed this for struture
+https://blog.risingstack.com/node-hero-node-js-project-structure-tutorial/
+
+Going through below link for basic site in node and express
+https://shapeshed.com/creating-a-basic-site-with-node-and-express/
+
+We will follow this tutorial
+https://blog.risingstack.com/node-hero-tutorial-getting-started-with-node-js/
+
+Real world node project look alike
+http://cwbuecheler.com/web/tutorials/2013/node-express-mongo/
+
+Laying down the framework
+http://theholmesoffice.com/getting-ready-for-scalability-creating-an-mvc-framework-for-our-node-js-page/
+
+Better development with node
+http://scottksmith.com/blog/2014/06/25/8-npm-tips-for-better-node-development/
+
+used this for controller examples
+https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/routes
+
+> explanation of express generated web app
+> mongo db usage tutorials
+https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/skeleton_website
+
+> deployed web project like this
+https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction
+
+> chat client with socket.io
+https://socket.io/get-started/chat/
