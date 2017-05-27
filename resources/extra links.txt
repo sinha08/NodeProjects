@@ -33,3 +33,6 @@ https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction
 
 > chat client with socket.io
 https://socket.io/get-started/chat/
+
+> express examples
+https://github.com/expressjs/express/tree/master/examples
