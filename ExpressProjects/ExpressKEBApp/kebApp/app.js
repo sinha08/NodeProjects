@@ -1,4 +1,5 @@
 var express = require('express');
+var session = require('express-session');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -20,13 +21,23 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+var isAuthenticated = function(req, res, next){
+  if(req.session.authenticated || req.url == '/' || req.url == '/login'){
+    next();
+  }else{
+    res.redirect('/');
+  }
+}
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(session({secret: 'jalebi'}));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(isAuthenticated);
 
 app.use('/', routes);
 app.use('/users', users);

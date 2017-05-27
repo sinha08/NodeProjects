@@ -12,7 +12,12 @@ exports.authenticate_login = function(req, res, next){
   User.findOne({ 'login_name': req.body.login_name, 'password': req.body.password })
       .exec(function(err, found_user){
         if(found_user){
-          res.redirect('/dashboard');
+          req.session.regenerate(function(){
+            req.session.login_name = req.body.login_name;
+            req.session.authenticated = true;
+            res.redirect('/dashboard');
+          });
+
         }else{
           res.redirect('/');
         }
@@ -34,5 +39,11 @@ exports.get_dashboard = function(req, res, next) {
 }
 
 exports.logout_user = function(req, res, next) {
-  res.redirect('/');
+  req.session.destroy(function(err){
+    if(err){
+      console.log(err);
+    }else{
+      res.redirect('/');
+    }
+  });
 }
