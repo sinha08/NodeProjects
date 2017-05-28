@@ -5,7 +5,7 @@ block content
     nav.navbar.navbar-inverse
       .container
         .navbar-header
-          a(href="#").navbar-brand Welcome
+          a#welcome_text.navbar-brand Welcome #{userLoginName}
         ul.nav.navbar-nav.navbar-right
           li
             a(href='/logout') Sign Out
