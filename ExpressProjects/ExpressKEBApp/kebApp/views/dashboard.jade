@@ -34,6 +34,8 @@ block content
                   tr
                     td=restaurant.restaurant_name
                     td
+                      i.glyphicon.glyphicon-minus.pull-right.remove-restaurant(data-value='#{restaurant.restaurant_name}')  
+                    td
                       i.glyphicon.glyphicon-plus.pull-right(data-toggle='collapse', data-target='##{restaurant.restaurant_name}')
                   tr.collapse(id = '#{restaurant.restaurant_name}')
                     td

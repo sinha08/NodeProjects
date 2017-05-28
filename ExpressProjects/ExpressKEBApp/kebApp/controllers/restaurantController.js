@@ -32,6 +32,19 @@ exports.restaurant_create_post = function(req, res, next){
     console.log('Exiting restaurant-create-post');
 }
 
+exports.restaurant_delete_post = function(req, res, next){
+  console.log('Entering restaurant_create_post');
+  var restaurant_name = req.body.restaurant_name;
+  Restaurant.deleteOne({ 'restaurant_name': restaurant_name }, function(err){
+    if(err){
+      return next(err);
+    }
+    res.type('text/plain');
+    res.json('success');
+  });
+  console.log('Exiting restaurant_create_post');
+}
+
 exports.restaurant_get = function(req, res, next){
     console.log('Entering restaurant_get');
     /*

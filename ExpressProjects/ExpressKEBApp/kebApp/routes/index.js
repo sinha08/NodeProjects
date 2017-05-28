@@ -14,4 +14,6 @@ router.get('/dashboard', index_controller.get_dashboard);
 
 router.post('/restaurant/create', restaurant_controller.restaurant_create_post);
 
+router.post('/restaurant/delete', restaurant_controller.restaurant_delete_post);
+
 module.exports = router;
