@@ -56,6 +56,9 @@ $(function () {
         reply = { text:"Bye, see you soon",
                   userName:"Alice"}
         socket.emit('chat message', reply);
+      } else {
+        reply = { text:"Didn't get you. Enter \'Bye\' to exit.",
+                  userName:"Alice"}
       }
       if (aiBot) {
         //add some reg expression for static bots or to make it more interesting add ml
