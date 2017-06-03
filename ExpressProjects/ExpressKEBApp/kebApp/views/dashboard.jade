@@ -34,7 +34,7 @@ block content
                   tr
                     td=restaurant.restaurant_name
                     td
-                      i.glyphicon.glyphicon-minus.pull-right.remove-restaurant(data-value='#{restaurant.restaurant_name}')  
+                      i.glyphicon.glyphicon-minus.pull-right.remove-restaurant(data-value='#{restaurant.restaurant_name}')
                     td
                       i.glyphicon.glyphicon-plus.pull-right(data-toggle='collapse', data-target='##{restaurant.restaurant_name}')
                   tr.collapse(id = '#{restaurant.restaurant_name}')
@@ -42,13 +42,20 @@ block content
                       input.form-control(type='text', placeholder='menu item')
     .container
       .row
-      .col-lg-3.form-group
-        label(for="exampleTextarea") Msg area
-        .jumbotron
-          ul#messages
-        form#chat_form(action='')
-          input#m(autocomplete='off')
-          button#chat_submit Send
+      .col-lg-3
+        #chatDiv
+          #chatPanel.panel.panel-primary
+            .panel-heading
+              | Chat Box
+            #chatPanelBody.panel-body
+              ul#chatMessages
+          #chatBtnDiv.panel.panel-primary
+            .panel-heading
+              .input-group
+                input#messageText.form-control(type='text', placeholder='type your message here')
+                span.input-group-btn
+                  button#sendMessageBtn.btn.btn-default(type='button') Send
+
     if users != undefined
       .container
         div

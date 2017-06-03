@@ -2,3 +2,15 @@
 #messages { list-style-type: none; margin: 0; padding: 0;}
 #messages li { padding: 5px 10px; }
 #messages li:nth-child(odd) { background: #eee; }
+
+#chatDiv
+{
+     position: fixed;
+     bottom: 0;
+     right: 10px;
+
+}
+#chatPanel, #chatBtnDiv
+{
+  width:300px;
+}
