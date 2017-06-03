@@ -41,6 +41,7 @@ $(function () {
       if($('#messageText').val() == ''){
         return;
       }
+      $('#chatPanel').addClass('collapse in');
       var msg = { text:$('#messageText').val(),
                   userName:$('#welcome_text').text().split(" ")[1]}
       socket.emit('chat message', msg);
@@ -65,4 +66,17 @@ $(function () {
       }
       return false;
     });
+
+    $('#closeChatPanelBtn').click(function(){
+      $('#chatPanel').removeClass('in');
+    });
+
+    $('#messageText').keyup(function(event){
+      if(event.keyCode == 13){
+        $('#sendMessageBtn').click();
+      }
+    });
+
+
+
   });

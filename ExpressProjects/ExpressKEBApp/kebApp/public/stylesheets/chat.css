@@ -10,7 +10,12 @@
      right: 10px;
 
 }
-#chatPanel, #chatBtnDiv
+#chatPanelBody, #chatBtnDiv
 {
-  width:300px;
+  width:260px;
+}
+#chatPanelBody
+{
+  height: 300px;
+  overflow: auto;
 }

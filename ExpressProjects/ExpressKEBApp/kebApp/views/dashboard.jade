@@ -44,9 +44,14 @@ block content
       .row
       .col-lg-3
         #chatDiv
-          #chatPanel.panel.panel-primary
+          #chatPanel.panel.panel-primary.collapse
             .panel-heading
-              | Chat Box
+              .panel-title
+                span
+                  | Chat Box
+                span
+                    button#closeChatPanelBtn.pull-right.btn
+                      | x
             #chatPanelBody.panel-body
               ul#chatMessages
           #chatBtnDiv.panel.panel-primary
