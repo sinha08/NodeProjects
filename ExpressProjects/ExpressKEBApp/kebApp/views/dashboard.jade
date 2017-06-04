@@ -71,14 +71,15 @@ block content
               tbody
                 each restaurant in restaurants
                   tr
+                    td
+                      i.glyphicon.glyphicon-minus.pull-left.remove-restaurant(data-value='#{restaurant.restaurant_name}')
                     td=restaurant.restaurant_name
                     td
-                      i.glyphicon.glyphicon-minus.pull-right.remove-restaurant(data-value='#{restaurant.restaurant_name}')
-                    td
-                      i.glyphicon.glyphicon-plus.pull-right(data-toggle='collapse', data-target='##{restaurant.restaurant_name}')
+                      i.glyphicon.glyphicon-plus-sign.pull-right(data-toggle='collapse', data-target='##{restaurant.restaurant_name}')
                   tr.collapse(id = '#{restaurant.restaurant_name}')
-                    td
+                    td(colspan='3')
                       input.form-control(type='text', placeholder='menu item')
+                      button#addMenuBtn.btn Add
     .container
       .row
       .col-lg-3
