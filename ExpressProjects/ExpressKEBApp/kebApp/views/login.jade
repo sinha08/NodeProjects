@@ -29,11 +29,15 @@ html
                 .col-lg-12
                   form#login-form(action='/login', method='post', role='form', style='display: block;')
                     .form-group
-                      input#login_name.form-control(type='text', name='login_name', tabindex='1', placeholder='Username', value='')
+                      input#login_name.form-control(type='text', name='login_name', tabindex='1', placeholder='Username', value='#{login_name}')
                     .form-group
-                      input#password.form-control(type='password', name='password', tabindex='2', placeholder='Password')
+                      input#password.form-control(type='password', name='password', tabindex='2', placeholder='Password',
+                      value='#{password}')
                     .form-group.text-center
-                      input#remember(type='checkbox', tabindex='3', name='remember')
+                      if remember == '1'
+                        input#remember(type='checkbox', tabindex='3', name='remember', value='1' checked)
+                      else
+                        input#remember(type='checkbox', tabindex='3', name='remember', value='1') 
                       label(for='remember')  Remember Me
                     .form-group
                       .row

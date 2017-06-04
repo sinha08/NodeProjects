@@ -2,7 +2,19 @@ var User = require('../models/user');
 var Restaurant = require('../models/restaurant');
 
 exports.get_login_page = function(req, res, next){
-  res.render('login');
+  var user_info = req.cookies.user_info;
+  var remember = req.cookies.remember;
+  var login_name = password = '';
+
+  if(remember == '1'){
+    login_name = user_info.login_name;
+    password = user_info.password;
+  }
+  res.render('login', {
+      login_name: login_name,
+      password: password ,
+      remember: remember
+  });
 }
 
 exports.authenticate_login = function(req, res, next){
@@ -15,6 +27,15 @@ exports.authenticate_login = function(req, res, next){
           req.session.regenerate(function(){
             req.session.login_name = req.body.login_name;
             req.session.authenticated = true;
+            console.log('req body ' + JSON.stringify(req.body));
+            if(req.body.remember == '1'){
+              var user_info = {
+                'login_name': req.body.login_name,
+                'password': req.body.password,
+              };
+              res.cookie('user_info', user_info);
+            }
+            res.cookie('remember', req.body.remember);
             res.redirect('/dashboard');
           });
 
