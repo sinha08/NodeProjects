@@ -27,6 +27,10 @@ $(function () {
       return false;
     });*/
     socket.on('chat message', function(msg){
+      if (msg != null) {
+        $('#chatPanel').addClass('collapse in');
+      }
+      
       if (msg.userName !== $('#welcome_text').text().split(" ")[1]){
         $('#messages').append($('<li>').text(msg.text).css({"text-align":"right", "color":"#782d3e"}));
         $('#chatMessages').append($('<li>').text(msg.text).css({"text-align":"right", "color":"#782d3e"}));
@@ -56,6 +60,9 @@ $(function () {
         reply = { text:"Bye, see you soon",
                   userName:"Alice"}
         socket.emit('chat message', reply);
+      } else {
+        reply = { text:"Didn't get you. Enter \'Bye\' to exit.",
+                  userName:"Alice"}
       }
       if (aiBot) {
         //add some reg expression for static bots or to make it more interesting add ml

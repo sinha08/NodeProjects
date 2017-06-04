@@ -15,7 +15,46 @@ block content
         p Welcome to KEB layout !!
     .container
       .row
-      .col-lg-9.form-group
+      .col-lg-3.form-group
+        script(type='text/javascript').
+          rssfeed_url = new Array();
+          rssfeed_url[0]="https://news.google.com/news?cf=all&hl=en&pz=1&ned=in&output=rss";
+          rssfeed_frame_width="250";
+          rssfeed_frame_height="250";
+          rssfeed_scroll="on";
+          rssfeed_scroll_step="6";
+          rssfeed_scroll_bar="off";
+          rssfeed_target="_blank";
+          rssfeed_font_size="12";
+          rssfeed_font_face="";
+          rssfeed_border="on";
+          rssfeed_css_url="http://feed.surfing-waves.com/css/style2a.css";
+          rssfeed_title="on";
+          rssfeed_title_name="";
+          rssfeed_title_bgcolor="#3366ff";
+          rssfeed_title_color="#fff";
+          rssfeed_title_bgimage="http://";
+          rssfeed_footer="off";
+          rssfeed_footer_name="rss feed";
+          rssfeed_footer_bgcolor="#fff";
+          rssfeed_footer_color="#333";
+          rssfeed_footer_bgimage="http://";
+          rssfeed_item_title_length="50";
+          rssfeed_item_title_color="#666";
+          rssfeed_item_bgcolor="#fff";
+          rssfeed_item_bgimage="http://";
+          rssfeed_item_border_bottom="on";
+          rssfeed_item_source_icon="off";
+          rssfeed_item_date="off";
+          rssfeed_item_description="on";
+          rssfeed_item_description_length="120";
+          rssfeed_item_description_color="#666";
+          rssfeed_item_description_link_color="#333";
+          rssfeed_item_description_tag="off";
+          rssfeed_no_items="0";
+          rssfeed_cache = "17e7f4b970a5874e29d976f7ea560207";
+        script(type='text/javascript', src='http://feed.surfing-waves.com/js/rss-feed.js')
+      .col-lg-6.form-group
         label(for="exampleTextarea") Likhne ka area
         textarea(rows="3").form-control#exampleTextarea
       .col-lg-3
@@ -32,14 +71,15 @@ block content
               tbody
                 each restaurant in restaurants
                   tr
+                    td
+                      i.glyphicon.glyphicon-minus.pull-left.remove-restaurant(data-value='#{restaurant.restaurant_name}')
                     td=restaurant.restaurant_name
                     td
-                      i.glyphicon.glyphicon-minus.pull-right.remove-restaurant(data-value='#{restaurant.restaurant_name}')
-                    td
-                      i.glyphicon.glyphicon-plus.pull-right(data-toggle='collapse', data-target='##{restaurant.restaurant_name}')
+                      i.glyphicon.glyphicon-plus-sign.pull-right(data-toggle='collapse', data-target='##{restaurant.restaurant_name}')
                   tr.collapse(id = '#{restaurant.restaurant_name}')
-                    td
+                    td(colspan='3')
                       input.form-control(type='text', placeholder='menu item')
+                      button#addMenuBtn.btn Add
     .container
       .row
       .col-lg-3
@@ -50,8 +90,7 @@ block content
                 span
                   | Chat Box
                 span
-                    button#closeChatPanelBtn.pull-right.btn
-                      | x
+                    icon#closeChatPanelBtn.pull-right.glyphicon.glyphicon-remove
             #chatPanelBody.panel-body
               ul#chatMessages
           #chatBtnDiv.panel.panel-primary
