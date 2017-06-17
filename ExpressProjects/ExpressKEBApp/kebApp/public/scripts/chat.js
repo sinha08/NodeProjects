@@ -30,13 +30,11 @@ $(function () {
       if (msg != null) {
         $('#chatPanel').addClass('collapse in');
       }
-      
+
       if (msg.userName !== $('#welcome_text').text().split(" ")[1]){
-        $('#messages').append($('<li>').text(msg.text).css({"text-align":"right", "color":"#782d3e"}));
-        $('#chatMessages').append($('<li>').text(msg.text).css({"text-align":"right", "color":"#782d3e"}));
+        $('#chatMessages').append($('<p>').text(msg.text).css({"text-align":"right", "color":"#782d3e"}));
       }else{
-        $('#messages').append($('<li>').text(msg.text).css({"text-align":"left", "color":"#06751b"}));
-        $('#chatMessages').append($('<li>').text(msg.text).css({"text-align":"left", "color":"#06751b"}));
+        $('#chatMessages').append($('<p>').text(msg.text).css({"text-align":"left", "color":"#06751b"}));
       }
     });
 
