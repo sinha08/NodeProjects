@@ -20,11 +20,13 @@ exports.user_create_post = function(req, res, next){
           if(err){ return next(err);}
 
           if(found_user){
-            res.redirect('/');
+              console.log('user exists');
+              res.json({ 'message': 'user exists'});
           }else{
             user.save(function(err){
+              console.log('created user');
               if(err){ return next(err)}
-              res.redirect('/');
+              res.json({ 'message': 'user created'});
             });
 
           }
