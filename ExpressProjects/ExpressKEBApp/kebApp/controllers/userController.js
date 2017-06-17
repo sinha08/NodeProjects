@@ -44,10 +44,9 @@ exports.users_get = function(req, res, next){
           if(err){
             return next(err);
           }
-          res.render('dashboard', { title: 'KEB Dashboard' ,
-                                    blacklist_names:'Nahi khana yaha se',
-                                    users: users
-                                  });
+          res.json({
+            'users': users
+          });
         });
     console.log('Exiting users_get');
 }

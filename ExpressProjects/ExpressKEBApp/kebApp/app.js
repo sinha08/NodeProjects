@@ -37,7 +37,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(isAuthenticated);
+// commented to bypass for REST development
+//TODO: implement authentication for REST
+//app.use(isAuthenticated);
 
 app.use('/', routes);
 app.use('/users', users);
