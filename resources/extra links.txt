@@ -36,3 +36,7 @@ https://socket.io/get-started/chat/
 
 > express examples
 https://github.com/expressjs/express/tree/master/examples
+
+> express rest api
+  > took idea from here - not exact
+https://www.codementor.io/olatundegaruba/nodejs-restful-apis-in-10-minutes-q0sgsfhbd
