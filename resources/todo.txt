@@ -4,4 +4,5 @@
 > ML games on this keb.
     e.g > Image guessing
 > Chat bot implementation
->
+> Blogging platform
+> 
