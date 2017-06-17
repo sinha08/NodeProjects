@@ -1,8 +1,9 @@
 > Convert keb server into REST Architecture.
+    > branch out code
 > Implement web UI component to connect to this new REST keb.
 > Implement mobile app UI component to connect to this new REST keb.
 > ML games on this keb.
     e.g > Image guessing
 > Chat bot implementation
 > Blogging platform
-> 
+>
