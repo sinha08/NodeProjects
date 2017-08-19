@@ -20,7 +20,12 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 var isAuthenticated = function(req, res, next){
-  if(req.session.authenticated || req.url == '/' || req.url == '/login'|| req.url == '/users/create'){
+  if(req.session.authenticated
+    || req.url == '/'
+    || req.url == '/login'
+    || req.url == '/users/create'
+    || req.url == '/send_report'
+    || req.url == '/send_feedback'){
     next();
   }else{
     res.redirect('/');

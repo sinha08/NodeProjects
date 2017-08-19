@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Report = require('../models/reports');
 var User = require('../models/user');
+var Feedback = require('../models/feedback');
 /* GET users listing. */
 router.get('/reports', function(req, res, next){
     console.log('Entering reports');
@@ -25,8 +26,15 @@ router.get('/feedback', function(req, res, next){
     /*
       req.body contains the json for user details. we need to create a function which will validate this user data
     */
-    res.render('feedback', { title: 'Feedback' ,
-                        });
+    Feedback.find({}, 'feedback_id account_name category card_type imei lat long loc_name app_version date time')
+    .exec(function(err, feedbacks){
+          if(err){
+            return next(err);
+          }
+          res.render('feedback', { title: 'Feedback' ,
+                                feedback: feedbacks
+                              });
+        });
     console.log('Exiting feedback');
 });
 

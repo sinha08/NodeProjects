@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Report = require('../models/reports');
 var User = require('../models/user');
+var Feedback = require('../models/feedback');
 
 /* GET home page. */
 router.get('/', function(req, res, next){
@@ -67,16 +68,46 @@ router.get('/logout',function(req, res, next) {
 //                       report_date:'12_08',
 //                       report_files:'abcd'});
 
-router.post('/test',function(req, res, next) {
+router.post('/send_report',function(req, res, next) {
   console.log(req.body);
   var report = new Report({report_name:req.body.report_name,
                         report_date:req.body.report_date,
                         report_files:req.body.report_files});
   report.save(function (err, report) {
-    if (err) return console.error(err);
-    console.log("successfully saved");
+    if (err) {
+      console.error(err);
+      res.status(501).send("Report not saved");
+    } else {
+      res.status(200).send("OK");
+      console.log("successfully saved");
+    }
   });
-  res.redirect('/');
+});
+
+router.post('/send_feedback',function(req, res, next) {
+  console.log(req.body);
+  var feedback = new Feedback({
+    feedback_id: req.body.feedback_id,
+    account_name: req.body.account_name,
+    category: req.body.category,
+    card_type: req.body.card_type,
+    imei: req.body.imei,
+    lat: req.body.loc_coord.lat,
+    long: req.body.loc_coord.long,
+    loc_name: req.body.loc_name,
+    app_version: req.body.app_version,
+    date: req.body.date_time.date,
+    time: req.body.date_time.time
+  });
+  feedback.save(function (err, feedback) {
+    if (err) {
+      console.error(err);
+      res.status(501).send("Feedback not saved");
+    } else {
+      res.status(200).send("OK");
+      console.log("successfully saved");
+    }
+  });
 });
 
 router.get('/heatmap', function(req, res, next) {

@@ -11,3 +11,34 @@ block content
   .container
     .jumbotron
       h1= title
+  .container
+    div
+    table.table.table-striped
+      thead
+        tr
+          th ID
+          th Account Name
+          th category
+          th Card type
+          th IMEI
+          th Latitudes
+          th Longitudes
+          th Location
+          th App Version
+          th Date
+          th Time
+      if feedback != undefined
+        tbody
+          each resp in feedback
+            tr
+              td= resp.feedback_id
+              td= resp.account_name
+              td= resp.category
+              td= resp.card_type
+              td= resp.imei
+              td= resp.lat
+              td= resp.long
+              td= resp.loc_name
+              td= resp.app_version
+              td= resp.date
+              td= resp.time
