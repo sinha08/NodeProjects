@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  nav.navbar.navbar-inverse
+    .container
+      .navbar-header
+        a#welcome_text.navbar-brand(href='/home') Home
+      ul.nav.navbar-nav.navbar-right
+        li
+          a(href='/logout') Sign Out
+  .container
+    .jumbotron
+      h1= title

@@ -13,12 +13,21 @@ router.get('/reports', function(req, res, next){
           if(err){
             return next(err);
           }
-          res.render('reports', { title: 'VOC DashBoard' ,
-                                userLoginName: req.session.login_name,
+          res.render('reports', { title: 'BUG Reports' ,
                                 report: reports
                               });
         });
-    console.log('Exiting users_get');
+    console.log('Exiting reports');
+});
+
+router.get('/feedback', function(req, res, next){
+    console.log('Entering feedback');
+    /*
+      req.body contains the json for user details. we need to create a function which will validate this user data
+    */
+    res.render('feedback', { title: 'Feedback' ,
+                        });
+    console.log('Exiting feedback');
 });
 
 router.post('/create',function(req, res, next){
