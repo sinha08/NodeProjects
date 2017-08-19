@@ -4,23 +4,34 @@ block content
   nav.navbar.navbar-inverse
     .container
       .navbar-header
-        a#welcome_text.navbar-brand Welcome
+        a#welcome_text.navbar-brand Welcome #{userLoginName}
+      ul.nav.navbar-nav.navbar-right
+        li
+          a(href='/logout') Sign Out
   .container
     .jumbotron
       h1= title
       p Welcome to #{title}
-  if report != undefined
-      .container
-        div
-        table.table.table-striped
-          thead
-            tr
-              th Name
-              th Date
-              th Files
-          tbody
-            each rep in report
-              tr
-                td= rep.report_name
-                td= rep.report_date
-                td= rep.report_files
+  .container
+    .row
+      .col-lg-4.form-group
+        .card.text-center
+          img.card-img-top(src='/images/BugReport.jpg', alt='Card image cap', style='width:15rem;height:15rem')
+          .card-block
+            p
+            h4.card-title Know Your Bugs
+            a.btn.btn-primary(href='/users/reports') Bug Report
+      .col-lg-4.form-group
+        .card.text-center
+          img.card-img-top(src='/images/feedback.jpg', alt='Card image cap', style='width:15rem;height:15rem')
+          .card-block
+            p
+            h4.card-title Know Your Users
+            a.btn.btn-primary(href='#') Feedback
+      .col-lg-4.form-group
+        .card.text-center
+          img.card-img-top(src='/images/Statistics.png', alt='Card image cap', style='width:15rem;height:15rem')
+          .card-block
+            p
+            h4.card-title Analyse The Data
+            a.btn.btn-primary(href='#') Statistics

@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  nav.navbar.navbar-inverse
+    .container
+      .navbar-header
+        a#welcome_text.navbar-brand Welcome #{userLoginName}
+      ul.nav.navbar-nav.navbar-right
+        li
+          a(href='/logout') Sign Out
+  .container
+    .jumbotron
+      h1= title
+  if report != undefined
+      .container
+        div
+        table.table.table-striped
+          thead
+            tr
+              th Name
+              th Date
+              th Files
+          tbody
+            each rep in report
+              tr
+                td= rep.report_name
+                td= rep.report_date
+                td= rep.report_files
