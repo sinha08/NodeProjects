@@ -25,7 +25,8 @@ var isAuthenticated = function(req, res, next){
     || req.url == '/login'
     || req.url == '/users/create'
     || req.url == '/send_report'
-    || req.url == '/send_feedback'){
+    || req.url == '/send_feedback'
+    || req.url == '/fileupload'){
     next();
   }else{
     res.redirect('/');
@@ -36,7 +37,7 @@ var isAuthenticated = function(req, res, next){
 app.use(session({secret: 'siso@123'}));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 

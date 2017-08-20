@@ -3,7 +3,23 @@ var router = express.Router();
 var Report = require('../models/reports');
 var User = require('../models/user');
 var Feedback = require('../models/feedback');
-
+var multer = require('multer');
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/')
+  },
+  filename: function (req, file, cb) {
+    console.log(file.filename);
+    cb(null, file.originalname);
+  }
+})
+var multerupload = multer({ storage: storage }).fields([{
+           name: 'image', maxCount: 1
+         }, {
+           name: 'video', maxCount: 1
+         },{
+           name: 'log', maxCount: 1
+         }])
 /* GET home page. */
 router.get('/', function(req, res, next){
   var user_info = req.cookies.user_info;
@@ -112,6 +128,18 @@ router.post('/send_feedback',function(req, res, next) {
 
 router.get('/heatmap', function(req, res, next) {
   res.render('heatmap');
+});
+
+router.post('/fileupload',function (req, res) {
+  console.log("entered file upload");
+  multerupload(req, res, function (err) {
+    console.log(req);
+    if (err) {
+      res.send(err);
+      return
+    }
+    res.status(200).send('OK');
+  });
 });
 
 module.exports = router;
