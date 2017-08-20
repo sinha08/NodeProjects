@@ -1,19 +1,32 @@
 var express = require('express');
 var router = express.Router();
-var Report = require('../models/reports');
 var User = require('../models/user');
 var Feedback = require('../models/feedback');
+var Upload = require('../models/upload');
+var path = require('path');
 /* GET users listing. */
 router.get('/reports', function(req, res, next){
     console.log('Entering reports');
     /*
       req.body contains the json for user details. we need to create a function which will validate this user data
     */
-    Report.find({}, 'report_name report_date report_files')
-        .exec(function(err, reports){
+    Feedback.aggregate([
+    { "$match": {"category":{$exists:false},
+          "card_type":{$exists:false},
+          "feedback_id":{$exists:true}} },
+    {
+        "$lookup": {
+            "from": "uploads", /* underlying collection for jobSchema */
+            "localField": "feedback_id",
+            "foreignField": "feedback_id",
+            "as": "files"
+        }
+    }
+    ]).exec(function(err, reports){
           if(err){
             return next(err);
           }
+         console.log(reports[0].files[0].receipt_path);
           res.render('reports', { title: 'BUG Reports' ,
                                 report: reports
                               });
@@ -26,7 +39,8 @@ router.get('/feedback', function(req, res, next){
     /*
       req.body contains the json for user details. we need to create a function which will validate this user data
     */
-    Feedback.find({}, 'feedback_id account_name category card_type imei lat long loc_name app_version date time')
+    Feedback.find({"category":{$exists:true},
+                    "card_type":{$exists:true}})
     .exec(function(err, feedbacks){
           if(err){
             return next(err);
@@ -86,5 +100,10 @@ router.get('/users',function(req, res, next){
           //                         });
         });
     console.log('Exiting users_get');
+});
+
+router.get('/upload/:files', function(req, res, next) {
+  console.log(path.join(__dirname,'../uploads'));
+  res.sendFile(path.join(__dirname,'../uploads',req.params.files));
 });
 module.exports = router;

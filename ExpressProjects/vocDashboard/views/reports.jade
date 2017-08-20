@@ -11,18 +11,55 @@ block content
   .container
     .jumbotron
       h1= title
-  if report != undefined
-      .container
-        div
-        table.table.table-striped
-          thead
+  .container
+    div
+    table.table.table-striped
+      thead
+        tr
+          th ID
+          th Account Name
+          th IMEI
+          th Latitudes
+          th Longitudes
+          th Location
+          th App Version
+          th Date
+          th Time
+          th Receipt
+          th Video
+          th POS capture
+          th Log
+      if report != undefined
+        tbody
+          each resp in report
             tr
-              th Name
-              th Date
-              th Files
-          tbody
-            each rep in report
-              tr
-                td= rep.report_name
-                td= rep.report_date
-                td= rep.report_files
+              td= resp.feedback_id
+              td= resp.account_name
+              td= resp.imei
+              td= resp.lat
+              td= resp.long
+              td= resp.loc_name
+              td= resp.app_version
+              td= resp.date
+              td= resp.time
+              if resp.files != undefined
+                if (resp.files[0] !=undefined && resp.files[0].receipt_path != undefined)
+                  td
+                    a(href=resp.files[0].receipt_path) Receipt
+                else
+                  td Null
+                if (resp.files[0] !=undefined && resp.files[0].video_path !=undefined)
+                  td
+                    a(href=resp.files[0].video_path) Video
+                else
+                  td Null
+                if (resp.files[0] !=undefined &&  resp.files[0].image_path != undefined)
+                  td
+                    a(href=resp.files[0].image_path) Image
+                else
+                  td Null
+                if (resp.files[0] !=undefined && resp.files[0].log_path != undefined)
+                  td
+                    a(href=resp.files[0].log_path) Log
+                else
+                  td Null

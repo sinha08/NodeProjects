@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var Report = require('../models/reports');
 var User = require('../models/user');
 var Feedback = require('../models/feedback');
+var Upload = require('../models/upload');
 var multer = require('multer');
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -17,6 +17,8 @@ var multerupload = multer({ storage: storage }).fields([{
            name: 'image', maxCount: 1
          }, {
            name: 'video', maxCount: 1
+         },{
+           name: 'receipt', maxCount: 1
          },{
            name: 'log', maxCount: 1
          }])
@@ -86,9 +88,17 @@ router.get('/logout',function(req, res, next) {
 
 router.post('/send_report',function(req, res, next) {
   console.log(req.body);
-  var report = new Report({report_name:req.body.report_name,
-                        report_date:req.body.report_date,
-                        report_files:req.body.report_files});
+  var report = new Feedback({
+    feedback_id: req.body.report_id,
+    account_name: req.body.account_name,
+    imei: req.body.imei,
+    lat: req.body.loc_coord.lat,
+    long: req.body.loc_coord.long,
+    loc_name: req.body.loc_name,
+    app_version: req.body.app_version,
+    date: req.body.date_time.date,
+    time: req.body.date_time.time
+  });
   report.save(function (err, report) {
     if (err) {
       console.error(err);
@@ -133,12 +143,30 @@ router.get('/heatmap', function(req, res, next) {
 router.post('/fileupload',function (req, res) {
   console.log("entered file upload");
   multerupload(req, res, function (err) {
-    console.log(req);
+    console.log(req.body.feedback_id);
     if (err) {
       res.send(err);
       return
     }
-    res.status(200).send('OK');
+
+    //handle null cases of path
+    var upload = new Upload({
+      upload_id: req.body.upload_id,
+      video_path: "upload/"+req.files.video[0].originalname,
+      image_path: "upload/"+req.files.image[0].originalname,
+      receipt_path:null,
+      log_path: null,
+      feedback_id: req.body.feedback_id
+    });
+    upload.save(function (err, report) {
+      if (err) {
+        console.error(err);
+        res.status(501).send("Report not saved");
+      } else {
+        res.status(200).send("OK");
+        console.log("successfully saved");
+      }
+    });
   });
 });
 
