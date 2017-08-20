@@ -149,13 +149,28 @@ router.post('/fileupload',function (req, res) {
       return
     }
 
+    var v_path = null;
+    var i_path = null;
+    var r_path = null;
+    var l_path = null;
     //handle null cases of path
+    if (req.files != undefined) {
+      if (req.files.video != undefined)
+        v_path = "upload/"+req.files.video[0].originalname;
+      if (req.files.image != undefined)
+        i_path = "upload/"+req.files.image[0].originalname;
+      if (req.files.receipt != undefined)
+        r_path = "upload/"+req.files.receipt[0].originalname;
+      if (req.files.log != undefined)
+        l_path = "upload/"+req.files.log[0].originalname;
+
+    }
     var upload = new Upload({
       upload_id: req.body.upload_id,
-      video_path: "upload/"+req.files.video[0].originalname,
-      image_path: "upload/"+req.files.image[0].originalname,
-      receipt_path:null,
-      log_path: null,
+      video_path: v_path,
+      image_path: i_path,
+      receipt_path: r_path,
+      log_path: l_path,
       feedback_id: req.body.feedback_id
     });
     upload.save(function (err, report) {

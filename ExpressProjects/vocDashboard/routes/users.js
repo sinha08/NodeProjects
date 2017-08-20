@@ -11,8 +11,9 @@ router.get('/reports', function(req, res, next){
       req.body contains the json for user details. we need to create a function which will validate this user data
     */
     Feedback.aggregate([
-    { "$match": {"category":{$exists:false},
-          "card_type":{$exists:false},
+    { "$match": {
+      // "category":{$exists:false},
+      //     "card_type":{$exists:false},
           "feedback_id":{$exists:true}} },
     {
         "$lookup": {
@@ -26,7 +27,6 @@ router.get('/reports', function(req, res, next){
           if(err){
             return next(err);
           }
-         console.log(reports[0].files[0].receipt_path);
           res.render('reports', { title: 'BUG Reports' ,
                                 report: reports
                               });
