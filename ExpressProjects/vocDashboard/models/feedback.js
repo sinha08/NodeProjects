@@ -12,8 +12,9 @@ var FeedbackSchema = new Schema({
   long: String,
   loc_name: String,
   app_version: String,
-  date: String,
-  time: String
+  date: {type:Date,default:Date.now},
+  time: String,
+  liked: {type:Boolean}
 });
 
 module.exports = mongoose.model('Feedback', FeedbackSchema);

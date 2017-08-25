@@ -102,9 +102,15 @@ router.post('/send_report',function(req, res, next) {
   report.save(function (err, report) {
     if (err) {
       console.error(err);
-      res.status(501).send("Report not saved");
+      res.json({
+        "error":"202",
+        "message": "Report not saved"
+      });
     } else {
-      res.status(200).send("OK");
+      res.json({
+        "error":"200",
+        "message": "OK"
+      });
       console.log("successfully saved");
     }
   });
@@ -128,9 +134,15 @@ router.post('/send_feedback',function(req, res, next) {
   feedback.save(function (err, feedback) {
     if (err) {
       console.error(err);
-      res.status(501).send("Feedback not saved");
+      res.json({
+        "error":"203",
+        "message": "Feedback not saved"
+      });
     } else {
-      res.status(200).send("OK");
+      res.json({
+        "error":"200",
+        "message": "OK"
+      });
       console.log("successfully saved");
     }
   });
@@ -176,9 +188,15 @@ router.post('/fileupload',function (req, res) {
     upload.save(function (err, report) {
       if (err) {
         console.error(err);
-        res.status(501).send("Report not saved");
+        res.json({
+          "error":"204",
+          "message": "File not uploaded"
+        });
       } else {
-        res.status(200).send("OK");
+        res.json({
+          "error":"200",
+          "message": "File uploaded"
+        });
         console.log("successfully saved");
       }
     });
