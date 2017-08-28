@@ -1,0 +1,28 @@
+String jsonString = "{\"feedback_id\": \"1600\",\"account_name\": \"abc@samsung.com\",\"category\": \"Card declined\",\"card_type\": \"VISA\",\"imei\": \"1234567890\",\"loc_coord\": { \"lat\":\"12.9323792\",\"long\":\"77.6936946\"},\"loc_name\": \"Kadubeesenahalli\",\"app_version\": \"2.8\",\"date_time\": {\"date\":\"2017/08/21\",\"time\":\"18:02\"}}";
+                    JsonObject json = new JsonParser().parse(jsonString).getAsJsonObject();
+
+                        Ion.with(getApplicationContext())
+                                .load("http://server ip:3300/send_feedback")
+                                .setJsonObjectBody(json)
+                                .asJsonObject()
+                                .setCallback(new FutureCallback<JsonObject>() {
+                                    @Override
+                                    public void onCompleted(Exception e, JsonObject result) {
+                                        // do stuff with the result or error
+                                        Log.d("Ion","result feedback:"+result);
+                                    }
+                                });
+                        Ion.with(getApplicationContext())
+                                .load("http://server ip:3300/fileupload")
+                                .setMultipartParameter("feedback_id", "1600")
+                                .setMultipartParameter("upload_id", "1900")
+                                .setMultipartFile("video", new File("/sdcard/jungBook.mp4"))
+                                .setMultipartFile("image", new File("/sdcard/parents_book.jpg"))
+                                .asJsonObject()
+                                .setCallback(new FutureCallback<JsonObject>() {
+                                    @Override
+                                    public void onCompleted(Exception e, JsonObject result) {
+                                        // do stuff with the result or error
+                                        Log.d("Ion","result:"+result);
+                                    }
+                                });
