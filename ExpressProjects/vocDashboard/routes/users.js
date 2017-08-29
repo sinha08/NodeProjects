@@ -27,6 +27,9 @@ router.get('/reports', function(req, res, next){
           if(err){
             return next(err);
           }
+          for (var i in reports) {
+          console.log(reports[i].files);
+        }
           res.render('reports', { title: 'BUG Reports' ,
                                 report: reports
                               });

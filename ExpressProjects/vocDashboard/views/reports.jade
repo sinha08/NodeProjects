@@ -43,23 +43,31 @@ block content
               td= resp.date
               td= resp.time
               if resp.files != undefined
-                if (resp.files[0] !=undefined && resp.files[0].receipt_path != undefined)
+                if (resp.files[0] !=undefined && resp.files[0].receipt_path != undefined && resp.files[0].receipt_path.length > 0)
                   td
-                    a(href=resp.files[0].receipt_path) Receipt
+                    - for(var i=0; i< resp.files[0].receipt_path.length; i++)
+                        a(href=resp.files[0].receipt_path[i]) Receipt#{i}
+                        br
                 else
                   td Null
-                if (resp.files[0] !=undefined && resp.files[0].video_path !=undefined)
+                if (resp.files[0] !=undefined && resp.files[0].video_path !=undefined && resp.files[0].video_path.length > 0)
                   td
-                    a(href=resp.files[0].video_path) Video
+                    - for(var i=0; i< resp.files[0].video_path.length;i++)
+                        a(href=resp.files[0].video_path[i]) Video#{i}
+                        br
                 else
                   td Null
-                if (resp.files[0] !=undefined &&  resp.files[0].image_path != undefined)
+                if (resp.files[0] !=undefined &&  resp.files[0].image_path != undefined && resp.files[0].image_path.length > 0)
                   td
-                    a(href=resp.files[0].image_path) Image
+                    - for(var i=0; i< resp.files[0].image_path.length;i++)
+                        a(href=resp.files[0].image_path[i]) Image#{i}
+                        br
                 else
                   td Null
-                if (resp.files[0] !=undefined && resp.files[0].log_path != undefined)
+                if (resp.files[0] !=undefined && resp.files[0].log_path != undefined && resp.files[0].log_path.length > 0)
                   td
-                    a(href=resp.files[0].log_path) Log
+                    - for(var i=0; i< resp.files[0].log_path.length;i++)
+                        a(href=resp.files[0].log_path[i]) Log#{i}
+                        br
                 else
                   td Null

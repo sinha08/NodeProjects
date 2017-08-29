@@ -4,10 +4,10 @@ var Schema = mongoose.Schema;
 
 var UploadSchema = new Schema({
   upload_id: String,
-  video_path: String,
-  image_path: String,
-  receipt_path:String,
-  log_path: String,
+  video_path: [{type:String}],
+  image_path: [{type:String}],
+  receipt_path:[{type:String}],
+  log_path: [{type:String}],
   feedback_id: String // to relate with feedback
 });
 

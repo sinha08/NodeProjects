@@ -14,13 +14,13 @@ var storage = multer.diskStorage({
   }
 })
 var multerupload = multer({ storage: storage }).fields([{
-           name: 'image', maxCount: 1
+           name: 'image', maxCount: 5
          }, {
-           name: 'video', maxCount: 1
+           name: 'video', maxCount: 5
          },{
-           name: 'receipt', maxCount: 1
+           name: 'receipt', maxCount: 5
          },{
-           name: 'log', maxCount: 1
+           name: 'log', maxCount: 5
          }])
 /* GET home page. */
 router.get('/', function(req, res, next){
@@ -161,20 +161,33 @@ router.post('/fileupload',function (req, res) {
       return
     }
 
-    var v_path = null;
-    var i_path = null;
-    var r_path = null;
-    var l_path = null;
+    var v_path = [];
+    var i_path = [];
+    var r_path = [];
+    var l_path = [];
+    console.log(req.files);
     //handle null cases of path
     if (req.files != undefined) {
-      if (req.files.video != undefined)
-        v_path = "upload/"+req.files.video[0].originalname;
-      if (req.files.image != undefined)
-        i_path = "upload/"+req.files.image[0].originalname;
-      if (req.files.receipt != undefined)
-        r_path = "upload/"+req.files.receipt[0].originalname;
-      if (req.files.log != undefined)
-        l_path = "upload/"+req.files.log[0].originalname;
+      if (req.files.video != undefined) {
+        for (var i in req.files.video) {
+          v_path.push("upload/"+req.files.video[i].originalname);
+        }
+      }
+      if (req.files.image != undefined){
+        for (var i in req.files.image) {
+          i_path.push("upload/"+req.files.image[i].originalname);
+        }
+      }
+      if (req.files.receipt != undefined){
+        for (var i in req.files.receipt) {
+          r_path.push("upload/"+req.files.receipt[i].originalname);
+        }
+      }
+      if (req.files.log != undefined){
+        for (var i in req.files.log) {
+          l_path.push("upload/"+req.files.log[i].originalname);
+        }
+      }
 
     }
     var upload = new Upload({
